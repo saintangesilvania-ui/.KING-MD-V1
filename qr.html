@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KING-MD — QR Code</title>
+<style>
+  body { background:#0a0a12; color:#fff; font-family:sans-serif; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; margin:0; padding:20px; text-align:center; }
+  h1 { color:#a855f7; }
+  img { border-radius:12px; margin:20px 0; background:#fff; padding:10px; }
+  button { background:#8b5cf6; color:#fff; border:none; padding:12px 24px; border-radius:8px; font-size:16px; cursor:pointer; }
+  #status { margin-top:10px; opacity:.8; }
+</style>
+</head>
+<body>
+  <h1>👑 KING-MD — Connexion par QR</h1>
+  <p>Ouvre WhatsApp sur ton téléphone → Paramètres → Appareils connectés → Lier un appareil, puis scanne ce code :</p>
+  <img id="qrImage" src="" alt="QR Code" style="display:none;width:280px;height:280px;" />
+  <div id="status">Clique pour générer un QR code</div>
+  <button onclick="loadQR()">Générer le QR code</button>
+
+  <script>
+    function loadQR() {
+      const img = document.getElementById('qrImage');
+      const status = document.getElementById('status');
+      status.textContent = '⏳ Génération en cours...';
+      img.style.display = 'none';
+      img.src = '/qr?t=' + Date.now();
+      img.onload = () => {
+        img.style.display = 'block';
+        status.textContent = '📷 Scanne avant expiration (~20 secondes)';
+      };
+      img.onerror = () => {
+        status.textContent = '❌ Échec, réessaie.';
+      };
+    }
+  </script>
+</body>
+</html>
