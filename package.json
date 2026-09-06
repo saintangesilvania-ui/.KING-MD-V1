@@ -1,6 +1,6 @@
 {
   "name": "king-md-v1",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "👑 KING-MD — Bot WhatsApp, reconstruit sur une base propre avec Baileys officiel",
   "main": "index.js",
   "type": "commonjs",

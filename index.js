@@ -53,8 +53,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'main.html'));
 });
 
+app.get('/pair', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pair.html'));
+});
+
+app.get('/version', (req, res) => {
+    res.json({ name: 'KING-MD V1', version: '1.0.2-corrige', baileys: require('@whiskeysockets/baileys/package.json').version });
+});
+
 app.listen(PORT, () => {
-    console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+    console.log(`🚀 KING-MD V1 (version corrigée 1.0.2) démarré sur le port ${PORT}`);
     startCleanupLoop();
 
     if (process.env.SESSION_ID && process.env.SESSION_NUMBER) {
