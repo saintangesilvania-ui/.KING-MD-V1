@@ -7,6 +7,7 @@ const QRCode = require('qrcode');
 const { connectToWhatsApp, connectViaQR } = require('./whatsapp');
 const { startCleanupLoop } = require('./lib/cleanup');
 const { installErrorGuard } = require('./lib/errorGuard');
+const { startTelegramBot } = require('./lib/telegramBot');
 
 installErrorGuard();
 
@@ -64,6 +65,7 @@ app.get('/version', (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 KING-MD V1 (version corrigée 1.0.2) démarré sur le port ${PORT}`);
     startCleanupLoop();
+    startTelegramBot();
 
     if (process.env.SESSION_ID && process.env.SESSION_NUMBER) {
         console.log('♻️ Tentative de reconnexion automatique via SESSION_ID...');

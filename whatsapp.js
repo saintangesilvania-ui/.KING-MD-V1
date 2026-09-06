@@ -199,7 +199,7 @@ async function connectToWhatsApp(number) {
         const sock = buildSocket(
             state,
             version,
-            resume ? Browsers.ubuntu('Chrome') : Browsers.macOS('Safari')
+            Browsers.ubuntu('Chrome')
         );
 
         sock.ev.on('creds.update', saveCreds);
